@@ -43503,6 +43503,7 @@
     <e p="C:\Users\perfe\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
     <e p="C:\Users\perfe\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Rythm.217561452.00" t="ExcludeRecursive" />
     <e p="C:\Users\perfe\Documents\Unreal Projects\Rythm" t="IncludeFlat">
+      <e p=".gitignore" t="Include" />
       <e p="Config" t="Include">
         <e p="DefaultEditor.ini" t="Include" />
         <e p="DefaultEngine.ini" t="Include" />
@@ -43516,6 +43517,7 @@
         <e p="UE4.vcxproj" t="IncludeRecursive" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="README.md" t="Include" />
       <e p="Rythm.sln" t="IncludeFlat" />
       <e p="Rythm.uproject" t="Include" />
       <e p="Source" t="Include">
@@ -43525,6 +43527,8 @@
           <e p="Rythm.h" t="Include" />
           <e p="RythmGameModeBase.cpp" t="Include" />
           <e p="RythmGameModeBase.h" t="Include" />
+          <e p="Test.cpp" t="Include" />
+          <e p="Test.h" t="Include" />
         </e>
         <e p="Rythm.Target.cs" t="Include" />
         <e p="RythmEditor.Target.cs" t="Include" />
