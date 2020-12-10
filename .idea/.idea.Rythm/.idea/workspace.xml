@@ -6,10 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.h" afterDir="false" />
     </list>
@@ -28,9 +28,11 @@
       <option value="$PROJECT_DIR$/Source/Rythm/Hero.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Hero.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lAM9C5fJ42cZPkMMJwQwCnX8Fl" />
@@ -275,7 +277,7 @@
       <workItem from="1607557450694" duration="860000" />
       <workItem from="1607599715537" duration="1963000" />
       <workItem from="1607601960416" duration="1000" />
-      <workItem from="1607602069321" duration="19650000" />
+      <workItem from="1607602069321" duration="21402000" />
     </task>
     <servers />
   </component>

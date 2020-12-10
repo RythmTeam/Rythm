@@ -16,7 +16,12 @@ class RYTHM_API AWarrior : public APerson
 	// Collision profile, can move and has 2 represents of statuses
 	// So he has a direction of view
 	// Warrior can attack and block attacks
-	// Warrior has a damage; 
+	// Warrior has a damage;
+
+	//TODO: change number of block frames
+	//TODO: rework bool variables
+	//TODO: Attack
+	//TODO: Block
 	GENERATED_BODY()
 public:
 	AWarrior();

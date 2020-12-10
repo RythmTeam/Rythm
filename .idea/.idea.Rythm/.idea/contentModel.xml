@@ -43523,6 +43523,8 @@
       <e p="Rythm.uproject" t="Include" />
       <e p="Source" t="Include">
         <e p="Rythm" t="Include">
+          <e p="Main_Hero.cpp" t="Include" />
+          <e p="Main_Hero.h" t="Include" />
           <e p="Person.cpp" t="Include" />
           <e p="Person.h" t="Include" />
           <e p="Rythm.Build.cs" t="Include" />

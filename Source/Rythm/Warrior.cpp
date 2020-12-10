@@ -65,7 +65,7 @@ void AWarrior::Tick(float DeltaTime)
 		}
 		else Attack_Frames++;
 	}
-	if (Is_Warrior_Started_Block)
+	else if (Is_Warrior_Started_Block)
 	{
 		if(Block_Frames == 10)
 		{
