@@ -2,8 +2,9 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "CoreMinimal.h" 
 #include "GameFramework/Actor.h"
+#include "Paper2D/Classes/PaperFlipbook.h"
 #include "Person.generated.h"
 
 UCLASS()
@@ -23,4 +24,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Direction")
+	class UArrowComponent* person_direction;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
+	class UPaperFlipbook* idle_animation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
+	class UPaperFlipbook* running_animation;
 };
