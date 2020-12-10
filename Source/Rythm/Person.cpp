@@ -3,6 +3,7 @@
 
 #include "Person.h"
 #include "Components/ArrowComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
 
 // Sets default values
 APerson::APerson()
@@ -14,12 +15,20 @@ APerson::APerson()
     {
     	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
     }
-    idle_animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
+    Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
     
-    running_animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
+    Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
     	
-    person_direction = CreateDefaultSubobject<UArrowComponent>(TEXT("PersonDirection"));
-    person_direction->AttachTo(RootComponent);
+    Person_Direction = CreateDefaultSubobject<UArrowComponent>(TEXT("PersonDirection"));
+    Person_Direction->AttachTo(RootComponent);
+
+	Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
+	Movement_Component->SetUpdatedComponent(RootComponent);
+	// Movement Preferences;
+	Movement_Component->MaxSpeed = 500.0f;
+	Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
+	Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
+	
 }
 
 // Called when the game starts or when spawned

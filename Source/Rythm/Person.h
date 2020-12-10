@@ -27,12 +27,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Direction")
-    class UArrowComponent* person_direction;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Direction")
+    class UArrowComponent* Person_Direction;
     
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
-    class UPaperFlipbook* idle_animation;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
+    class UPaperFlipbook* Idle_Animation;
     
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
-    class UPaperFlipbook* running_animation;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
+    class UPaperFlipbook* Running_Animation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	class UFloatingPawnMovement* Movement_Component;
 };
