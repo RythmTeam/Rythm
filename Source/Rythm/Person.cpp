@@ -51,7 +51,7 @@ void APerson::Update_Animation()
 	const FVector Player_Velocity = GetVelocity();
 	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
         Running_Animation : Idle_Animation;
-	if ( GetSprite()->GetFlipbook() != Desired_Animation)
+	if (GetSprite()->GetFlipbook() != Desired_Animation)
 	{
 		GetSprite()->SetFlipbook(Desired_Animation);
 	}

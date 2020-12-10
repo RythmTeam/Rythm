@@ -22,6 +22,11 @@ public:
 	AWarrior();
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Characters")
 	int32 Damage_Value;
+
+	bool Is_Warrior_Started_Attack;
+	bool Is_Warrior_Started_Block;
+	bool Is_Warrior_Stopped_Attack;
+	bool Is_Warrior_Stopped_Block;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
 	UPaperFlipbook* Attack_Animation;
@@ -39,6 +44,9 @@ public:
 	// Overrides to add attack & block animations
 	virtual void Update_Animation() override;
 
-	//Overrides to add attack & block
+	// Overrides to add attack & block actions;
+	virtual void Tick(float DeltaTime) override;
+	
+	//Overrides to add attack & block actions
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };
