@@ -26,6 +26,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	// Collision Profile - ?
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Direction")
     class UArrowComponent* Person_Direction;
@@ -38,4 +40,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	class UFloatingPawnMovement* Movement_Component;
+
+	UFUNCTION()
+	void Vertical_Movement(float val);
+
+	UFUNCTION()
+	void Horizontal_Movement(float val);
 };

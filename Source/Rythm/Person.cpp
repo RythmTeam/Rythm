@@ -45,10 +45,24 @@ void APerson::Tick(float DeltaTime)
 
 }
 
+void APerson::Horizontal_Movement(float value)
+{
+	const FVector input = FVector(value, 0.0f, 0.0f);
+	AddMovementInput(input);
+}
+
+void APerson::Vertical_Movement(float value)
+{
+	const FVector input = FVector(0.0f, 0.0f, value);
+	AddMovementInput(input);
+}
+
 // Called to bind functionality to input
 void APerson::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Movement);
+	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Movement);
 }
 
