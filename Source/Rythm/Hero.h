@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Person.h"
+#include "Camera/CameraComponent.h"
+
 #include "Hero.generated.h"
 
 /**
@@ -23,5 +25,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
 	UPaperFlipbook* Block_Animation;
 
-	// Camera - ?
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
+	UCameraComponent* Camera_Component;
 };

@@ -42,8 +42,8 @@ public:
 	class UFloatingPawnMovement* Movement_Component;
 
 	UFUNCTION()
-	void Vertical_Movement(float val);
+	void Vertical_Movement(float value);
 
 	UFUNCTION()
-	void Horizontal_Movement(float val);
+	void Horizontal_Movement(float value);
 };
