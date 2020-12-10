@@ -1,28 +1,34 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-#include "Person.h"
-
-#include "../../../../../../../Program Files/Epic Games/UE_4.25/Engine/Shaders/Private/ParticleGPUSpriteVertexFactory.ush"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/Controller.h"
+#include "PaperFlipbookComponent.h"
+#include "Components/BoxComponent.h"
+#include "Person.h"
 
-// Sets default values
 APerson::APerson()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
 	if (!RootComponent)
-    {
-    	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
-    }
-    Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
+	{
+		RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
+	}
+	UBoxComponent* Collision = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
+	Collision->SetBoxExtent(FVector(5.0f, 5.0f, 5.0f));
+	Collision->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
+	Collision->SetCollisionProfileName("Person");
+	
+	Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
     
-    Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
+	Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
     	
-    Person_Direction = CreateDefaultSubobject<UArrowComponent>(TEXT("PersonDirection"));
-    Person_Direction->AttachTo(RootComponent);
+	Person_Direction = CreateDefaultSubobject<UArrowComponent>(TEXT("PersonDirection"));
+	Person_Direction->AttachTo(RootComponent);
 
 	Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
 	Movement_Component->SetUpdatedComponent(RootComponent);
@@ -30,28 +36,55 @@ APerson::APerson()
 	Movement_Component->MaxSpeed = 500.0f;
 	Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
 	Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
-	
+
+	Health_Value = 0.0f;
 }
 
 // Called when the game starts or when spawned
 void APerson::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
-void APerson::Update_Movement_Animation()
+void APerson::Update_Animation()
 {
 	const FVector Player_Velocity = GetVelocity();
-	UPaperFlipbook* DesiredAnimation = Player_Velocity.SizeSquared() > 0.0f ?
-		Running_Animation : Idle_Animation;
+	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
+        Running_Animation : Idle_Animation;
+	if ( GetSprite()->GetFlipbook() != Desired_Animation)
+	{
+		GetSprite()->SetFlipbook(Desired_Animation);
+	}
 }
+
+void APerson::Update_Person()
+{
+	// Update animation to match the motion
+	Update_Animation();
+
+	// Now setup the rotation of the controller based on the direction we are travelling
+	const FVector PlayerVelocity = GetVelocity();	
+	const float TravelDirection = PlayerVelocity.X;
+	// Set the rotation so that the character faces his direction of travel.
+	if (Controller != nullptr)
+	{
+		if (TravelDirection < 0.0f)
+		{
+			Controller->SetControlRotation(FRotator(0.0, 180.0f, 0.0f));
+		}
+		else if (TravelDirection > 0.0f)
+		{
+			Controller->SetControlRotation(FRotator(0.0f, 0.0f, 0.0f));
+		}
+	}
+}
+
 
 // Called every frame
 void APerson::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	// Is person moving?
+	Update_Person();
 }
 
 void APerson::Horizontal_Movement(float value)
@@ -74,4 +107,3 @@ void APerson::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Movement);
 	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Movement);
 }
-

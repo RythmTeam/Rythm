@@ -43523,8 +43523,6 @@
       <e p="Rythm.uproject" t="Include" />
       <e p="Source" t="Include">
         <e p="Rythm" t="Include">
-          <e p="Hero.cpp" t="Include" />
-          <e p="Hero.h" t="Include" />
           <e p="Person.cpp" t="Include" />
           <e p="Person.h" t="Include" />
           <e p="Rythm.Build.cs" t="Include" />
@@ -43532,6 +43530,8 @@
           <e p="Rythm.h" t="Include" />
           <e p="RythmGameModeBase.cpp" t="Include" />
           <e p="RythmGameModeBase.h" t="Include" />
+          <e p="Warrior.cpp" t="Include" />
+          <e p="Warrior.h" t="Include" />
         </e>
         <e p="Rythm.Target.cs" t="Include" />
         <e p="RythmEditor.Target.cs" t="Include" />
