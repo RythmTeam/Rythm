@@ -46,4 +46,7 @@ public:
 
 	UFUNCTION()
 	void Horizontal_Movement(float value);
+
+	UFUNCTION()
+	void Update_Movement_Animation();
 };

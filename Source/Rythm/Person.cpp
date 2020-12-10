@@ -2,6 +2,8 @@
 
 
 #include "Person.h"
+
+#include "../../../../../../../Program Files/Epic Games/UE_4.25/Engine/Shaders/Private/ParticleGPUSpriteVertexFactory.ush"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
 
@@ -38,11 +40,18 @@ void APerson::BeginPlay()
 	
 }
 
+void APerson::Update_Movement_Animation()
+{
+	const FVector Player_Velocity = GetVelocity();
+	UPaperFlipbook* DesiredAnimation = Player_Velocity.SizeSquared() > 0.0f ?
+		Running_Animation : Idle_Animation;
+}
+
 // Called every frame
 void APerson::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	// Is person moving?
 }
 
 void APerson::Horizontal_Movement(float value)
