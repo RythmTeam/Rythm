@@ -6,9 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +267,8 @@
       <workItem from="1607554831200" duration="30000" />
       <workItem from="1607555438183" duration="1622000" />
       <workItem from="1607557450694" duration="860000" />
-      <workItem from="1607599715537" duration="1358000" />
+      <workItem from="1607599715537" duration="1963000" />
+      <workItem from="1607601960416" duration="1000" />
     </task>
     <servers />
   </component>

@@ -2,18 +2,18 @@
 
 #pragma once
 
-#include "CoreMinimal.h" 
-#include "GameFramework/Actor.h"
+#include "CoreMinimal.h"
+#include "GameFramework/Pawn.h"
 #include "Paper2D/Classes/PaperFlipbook.h"
 #include "Person.generated.h"
 
 UCLASS()
-class RYTHM_API APerson : public AActor
+class RYTHM_API APerson : public APawn
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
+public:
+	// Sets default values for this pawn's properties
 	APerson();
 
 protected:
@@ -24,12 +24,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Direction")
-	class UArrowComponent* person_direction;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
-	class UPaperFlipbook* idle_animation;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
-	class UPaperFlipbook* running_animation;
+    class UArrowComponent* person_direction;
+    
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
+    class UPaperFlipbook* idle_animation;
+    
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Animations")
+    class UPaperFlipbook* running_animation;
 };
