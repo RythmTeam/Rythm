@@ -6,7 +6,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "PaperFlipbookComponent.h"
-#include "Components/BoxComponent.h"
 #include "Person.h"
 
 APerson::APerson()
@@ -14,16 +13,9 @@ APerson::APerson()
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	if (!RootComponent)
-	{
-		RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
-	}
-	UBoxComponent* Collision = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
-	Collision->SetBoxExtent(FVector(5.0f, 5.0f, 5.0f));
-	Collision->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
-	Collision->SetCollisionProfileName("Person");
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
 	
-	Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
+	Idle_Animation = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("Idle"));
     
 	Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
     	
@@ -50,7 +42,7 @@ void APerson::Update_Animation()
 {
 	const FVector Player_Velocity = GetVelocity();
 	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-        Running_Animation : Idle_Animation;
+        Running_Animation : Idle_Animation->GetFlipbook();
 	if (GetSprite()->GetFlipbook() != Desired_Animation)
 	{
 		GetSprite()->SetFlipbook(Desired_Animation);

@@ -42,7 +42,7 @@ void AWarrior::Update_Animation()
 	{
 		const FVector Player_Velocity = GetVelocity();
 		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-            Running_Animation : Idle_Animation;
+            Running_Animation : Idle_Animation->GetFlipbook();
 	}
 	if (GetSprite()->GetFlipbook() != Desired_Animation)
 	{

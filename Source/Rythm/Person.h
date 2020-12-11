@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
+#include "PaperFlipbookComponent.h"
 #include "Paper2D/Classes/PaperFlipbook.h"
 #include "Person.generated.h"
 /**
@@ -34,7 +35,7 @@ public:
 	class UArrowComponent* Person_Direction;
     
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
-	class UPaperFlipbook* Idle_Animation;
+	class UPaperFlipbookComponent* Idle_Animation;
     
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
 	class UPaperFlipbook* Running_Animation;
