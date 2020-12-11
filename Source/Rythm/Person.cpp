@@ -13,14 +13,9 @@ APerson::APerson()
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("PersonBase"));
-	
-	Idle_Animation = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("Idle"));
+	Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
     
 	Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
-    	
-	Person_Direction = CreateDefaultSubobject<UArrowComponent>(TEXT("PersonDirection"));
-	Person_Direction->AttachTo(RootComponent);
 
 	Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
 	Movement_Component->SetUpdatedComponent(RootComponent);
@@ -29,6 +24,9 @@ APerson::APerson()
 	Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
 	Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
 
+	GetSprite()->SetIsReplicated(true);
+	bReplicates = true;
+	
 	Health_Value = 0.0f;
 }
 
@@ -42,7 +40,7 @@ void APerson::Update_Animation()
 {
 	const FVector Player_Velocity = GetVelocity();
 	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-        Running_Animation : Idle_Animation->GetFlipbook();
+        Running_Animation : Idle_Animation;
 	if (GetSprite()->GetFlipbook() != Desired_Animation)
 	{
 		GetSprite()->SetFlipbook(Desired_Animation);

@@ -30,14 +30,11 @@ public:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Characters")
 	int32 Health_Value;
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Direction")
-	class UArrowComponent* Person_Direction;
+	    
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
+	class UPaperFlipbook* Idle_Animation;
     
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
-	class UPaperFlipbookComponent* Idle_Animation;
-    
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
 	class UPaperFlipbook* Running_Animation;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")

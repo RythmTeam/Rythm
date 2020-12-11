@@ -15,4 +15,5 @@ class RYTHM_API ARythmGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 public:
 	ARythmGameModeBase();
+
 };

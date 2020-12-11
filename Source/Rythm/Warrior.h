@@ -33,10 +33,10 @@ public:
 	bool Is_Warrior_Stopped_Attack;
 	bool Is_Warrior_Stopped_Block;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Animations")
 	UPaperFlipbook* Attack_Animation;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Animations")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Animations")
 	UPaperFlipbook* Block_Animation;
 
 	UFUNCTION()

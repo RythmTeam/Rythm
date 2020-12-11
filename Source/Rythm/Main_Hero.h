@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "Warrior.h"
 #include "Camera/CameraComponent.h"
-
+#include "Paper2D/Classes/PaperSpriteComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Main_Hero.generated.h"
 
 /**
@@ -20,4 +21,8 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* Camera_Component;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SpringArm")
+	USpringArmComponent* SpringArm;
+
 };
