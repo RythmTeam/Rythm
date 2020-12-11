@@ -6,18 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Flipbooks/Main_Hero_Attack_flipbook.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Flipbooks/Main_Hero_Idle_flipbook.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Flipbooks/Main_Hero_Run_flipbook.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Sprites/Protagonist_Sprites/Idle/Main_Hero_Idle_sprite_1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +275,7 @@
       <workItem from="1607557450694" duration="860000" />
       <workItem from="1607599715537" duration="1963000" />
       <workItem from="1607601960416" duration="1000" />
-      <workItem from="1607602069321" duration="24399000" />
+      <workItem from="1607602069321" duration="24735000" />
     </task>
     <servers />
   </component>
