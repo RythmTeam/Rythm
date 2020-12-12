@@ -13,9 +13,9 @@ APerson::APerson()
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
+	//Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
     
-	Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
+	//Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
 
 	Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
 	Movement_Component->SetUpdatedComponent(RootComponent);

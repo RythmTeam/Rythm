@@ -6,8 +6,8 @@
 
 AWarrior::AWarrior()
 {
-	Attack_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Attack"));
-	Block_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Block"));
+	//Attack_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Attack"));
+	//Block_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Block"));
 	Damage_Value = 0.0f;
 	Is_Warrior_Started_Attack = false;
 	Is_Warrior_Started_Block = false;
@@ -52,6 +52,8 @@ void AWarrior::Update_Animation()
 
 void AWarrior::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
+	
 	static int32 Attack_Frames = 0;
 	// TODO: Change Number of Block Frames
 	static int32 Block_Frames = 0;
