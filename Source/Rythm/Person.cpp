@@ -28,18 +28,9 @@ APerson::APerson()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	Person_Movement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
 	
-	//Idle_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Idle"));
-    
-	//Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
-
-	//Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
-	//Movement_Component->SetUpdatedComponent(RootComponent);
-	// Movement Preferences;
-	//Movement_Component->MaxSpeed = 500.0f;
-	//Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
-	//Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
-
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;	
 }	
@@ -68,8 +59,7 @@ void APerson::Update_Person(const float& DeltaTime)
 
 	// Now setup the rotation of the controller based on the direction we are travelling
 	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;	
-	const float TravelDirection = PlayerVelocity.X;
-	//const FVector PlayerVelocity3D(PlayerVelocity.X, 0.0f, PlayerVelocity.Y);
+	const float TravelDirection = PlayerVelocity.X;;
 	// Set the rotation so that the character faces his direction of travel.
 	if (Controller != nullptr)
 	{
@@ -84,15 +74,16 @@ void APerson::Update_Person(const float& DeltaTime)
 			UE_LOG(LogTemp, Warning, TEXT("Straight"));
 		}
 	}
-
 	// Move person
-	FVector Position = GetActorLocation();
+	//FVector Position = GetActorLocation();
 	const float SpeedX = PlayerVelocity.X * Person_MoveSpeed * DeltaTime;
 	const float SpeedZ = PlayerVelocity.Y * Person_MoveSpeed * DeltaTime;
-	Position.X += SpeedX;
-	Position.Z += SpeedZ;
+	//Position.X += SpeedX;
+	//Position.Z += SpeedZ;
+	const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
+	AddMovementInput(AddingInput);
 	UE_LOG(LogTemp, Warning, TEXT("New Position (%f, %f, %f)"), SpeedX, SpeedZ);
-	SetActorLocation(Position);
+	//SetActorLocation(Position);
 }
 
 

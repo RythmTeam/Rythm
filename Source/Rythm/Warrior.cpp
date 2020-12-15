@@ -40,7 +40,7 @@ void AWarrior::Update_Animation()
 	}
 	else
 	{
-		const FVector Player_Velocity = GetVelocity();
+		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
 		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
             Running_Animation : Idle_Animation;
 	}
@@ -78,7 +78,7 @@ void AWarrior::Tick(float DeltaTime)
 		else Block_Frames++;
 	}
 	
-	Update_Animation();
+	Update_Person(DeltaTime);
 }
 
 void AWarrior::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
