@@ -10,6 +10,22 @@
 /**
  * 
  */
+USTRUCT(BlueprintType)
+struct FPersonInput
+{
+	GENERATED_BODY()
+public:
+	
+	FVector2D PureMovementInput;
+	void Sanitize();
+	void MoveX(float Value);
+	void MoveY(float Value);
+private:
+	
+	FVector2D RawMovementInput;
+};
+
+
 UCLASS()
 class RYTHM_API APerson : public APaperCharacter
 {
@@ -37,8 +53,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
 	class UPaperFlipbook* Running_Animation;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
-	class UFloatingPawnMovement* Movement_Component;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	//class UFloatingPawnMovement* Movement_Component;
+	
 
 	UFUNCTION()
     void Vertical_Movement(float Value);
@@ -57,5 +74,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Person Input")
+	FPersonInput PersonInput;
 };

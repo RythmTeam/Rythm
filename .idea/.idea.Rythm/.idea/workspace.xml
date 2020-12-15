@@ -7,6 +7,11 @@
   <component name="ChangeListManager">
     <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +29,14 @@
       <option value="$PROJECT_DIR$/Source/Rythm/Hero.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lAM9C5fJ42cZPkMMJwQwCnX8Fl" />
@@ -280,6 +285,7 @@
       <workItem from="1607720950003" duration="8491000" />
       <workItem from="1607801334175" duration="2681000" />
       <workItem from="1607865786031" duration="163000" />
+      <workItem from="1608039421910" duration="1669000" />
     </task>
     <servers />
   </component>

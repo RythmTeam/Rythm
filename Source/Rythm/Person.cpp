@@ -1,13 +1,30 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Components/ArrowComponent.h"
-#include "GameFramework/FloatingPawnMovement.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "PaperFlipbookComponent.h"
 #include "Person.h"
 
+//////////////////////// Person Input Custom Component
+void FPersonInput::MoveX(const float Value)
+{
+	RawMovementInput.X += Value;
+}
+
+void FPersonInput::MoveY(const float Value)
+{
+	RawMovementInput.Y += Value;
+}
+
+void FPersonInput::Sanitize()
+{
+	PureMovementInput = RawMovementInput.ClampAxes(-1.0f, 1.0f);
+	PureMovementInput = PureMovementInput.GetSafeNormal();
+	RawMovementInput.Set(0.0f, 0.0f);
+}
+
+////////////////////////
 APerson::APerson()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -17,12 +34,12 @@ APerson::APerson()
     
 	//Running_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Run"));
 
-	Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
-	Movement_Component->SetUpdatedComponent(RootComponent);
+	//Movement_Component = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement_Component"));
+	//Movement_Component->SetUpdatedComponent(RootComponent);
 	// Movement Preferences;
-	Movement_Component->MaxSpeed = 500.0f;
-	Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
-	Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
+	//Movement_Component->MaxSpeed = 500.0f;
+	//Movement_Component->Acceleration = Movement_Component->GetMaxSpeed() * 2;
+	//Movement_Component->Deceleration = Movement_Component->GetMaxSpeed() * 2;
 
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
@@ -38,7 +55,7 @@ void APerson::BeginPlay()
 
 void APerson::Update_Animation()
 {
-	const FVector Player_Velocity = GetVelocity();
+	const FVector2D Player_Velocity = PersonInput.PureMovementInput;
 	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
         Running_Animation : Idle_Animation;
 	if (GetSprite()->GetFlipbook() != Desired_Animation)
@@ -53,7 +70,7 @@ void APerson::Update_Person()
 	Update_Animation();
 
 	// Now setup the rotation of the controller based on the direction we are travelling
-	const FVector PlayerVelocity = GetVelocity();	
+	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;	
 	const float TravelDirection = PlayerVelocity.X;
 	// Set the rotation so that the character faces his direction of travel.
 	if (Controller != nullptr)
@@ -74,19 +91,20 @@ void APerson::Update_Person()
 void APerson::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	PersonInput.Sanitize();
+	UE_LOG(LogTemp, Warning, TEXT("Movement input: (%f, %f)"),
+		PersonInput.PureMovementInput.X, PersonInput.PureMovementInput.Y);
 	Update_Person();
 }
 
-void APerson::Horizontal_Movement(float value)
+void APerson::Horizontal_Movement(float Value)
 {
-	const FVector input = FVector(value, 0.0f, 0.0f);
-	AddMovementInput(input);
+	PersonInput.MoveX(Value);
 }
 
-void APerson::Vertical_Movement(float value)
+void APerson::Vertical_Movement(float Value)
 {
-	const FVector input = FVector(0.0f, 0.0f, value);
-	AddMovementInput(input);
+	PersonInput.MoveY(Value);
 }
 
 // Called to bind functionality to input
