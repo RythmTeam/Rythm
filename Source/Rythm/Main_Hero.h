@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Warrior.h"
 #include "Camera/CameraComponent.h"
-#include "Paper2D/Classes/PaperSpriteComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Main_Hero.generated.h"
 

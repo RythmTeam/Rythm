@@ -43529,6 +43529,8 @@
           <e p="Person.h" t="Include" />
           <e p="Person_With_Camera.cpp" t="Include" />
           <e p="Person_With_Camera.h" t="Include" />
+          <e p="PersonStatics.cpp" t="Include" />
+          <e p="PersonStatics.h" t="Include" />
           <e p="Rythm.Build.cs" t="Include" />
           <e p="Rythm.cpp" t="Include" />
           <e p="Rythm.h" t="Include" />

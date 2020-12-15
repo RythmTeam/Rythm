@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "PaperFlipbookComponent.h"
-#include "Paper2D/Classes/PaperFlipbook.h"
+#include "Components/ArrowComponent.h"
 #include "Person.generated.h"
 /**
  * 
@@ -18,8 +18,8 @@ public:
 	
 	FVector2D PureMovementInput;
 	void Sanitize();
-	void MoveX(float Value);
-	void MoveY(float Value);
+	void MoveHorizontal(float Value);
+	void MoveVertical(float Value);
 private:
 	
 	FVector2D RawMovementInput;
@@ -43,8 +43,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "Characters")
+	float Person_MoveSpeed;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Characters")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Characters")
 	int32 Health_Value;
 	    
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
@@ -53,9 +55,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
 	class UPaperFlipbook* Running_Animation;
 
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
-	//class UFloatingPawnMovement* Movement_Component;
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	class UArrowComponent* Person_Direction;
 
 	UFUNCTION()
     void Vertical_Movement(float Value);
@@ -67,7 +68,7 @@ public:
     virtual void Update_Animation();
 
 	UFUNCTION()
-	void Update_Person();
+	void Update_Person(const float& DeltaTime);
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -78,4 +79,5 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Person Input")
 	FPersonInput PersonInput;
+
 };
