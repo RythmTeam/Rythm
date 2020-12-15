@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Person_With_Camera.h"
+#include "Warrior_With_Camera.h"
 
-APerson_With_Camera::APerson_With_Camera()
+AWarrior_With_Camera::AWarrior_With_Camera()
 {
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->TargetArmLength = 1000.0f;

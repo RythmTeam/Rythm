@@ -6,6 +6,7 @@
 #include "PaperCharacter.h"
 #include "PaperFlipbookComponent.h"
 #include "Components/ArrowComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
 #include "Person.generated.h"
 /**
  * 
@@ -57,6 +58,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	class UArrowComponent* Person_Direction;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	class UFloatingPawnMovement* Person_Movement;
 
 	UFUNCTION()
     void Vertical_Movement(float Value);
