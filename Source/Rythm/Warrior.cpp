@@ -8,6 +8,7 @@ AWarrior::AWarrior()
 {
 	//Attack_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Attack"));
 	//Block_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Block"));
+	
 	Damage_Value = 0.0f;
 	Is_Warrior_Started_Attack = false;
 	Is_Warrior_Started_Block = false;
@@ -34,13 +35,14 @@ void AWarrior::Update_Animation()
 	{
 		Desired_Animation = Attack_Animation;
 	}
-	else if(!Is_Warrior_Started_Block)
+	else if(!Is_Warrior_Stopped_Block)
 	{
 		Desired_Animation = Block_Animation;
 	}
 	else
 	{
 		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
+		UE_LOG(LogTemp, Warning, TEXT("Warrior speed squared (%f"), Player_Velocity.SizeSquared()); 
 		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
             Running_Animation : Idle_Animation;
 	}
@@ -77,7 +79,6 @@ void AWarrior::Tick(float DeltaTime)
 		}
 		else Block_Frames++;
 	}
-	
 	Update_Person(DeltaTime);
 }
 

@@ -23,5 +23,4 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SpringArm")
 	USpringArmComponent* SpringArm;
-
 };

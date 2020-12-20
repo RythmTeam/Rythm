@@ -29,6 +29,9 @@ APerson::APerson()
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	GetCharacterMovement()->DestroyComponent();
+	GetCharacterMovement()->SetActive(false);
+
 	Person_Movement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
 	
 	GetSprite()->SetIsReplicated(true);
@@ -81,7 +84,7 @@ void APerson::Update_Person(const float& DeltaTime)
 	//Position.X += SpeedX;
 	//Position.Z += SpeedZ;
 	const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
-	AddMovementInput(AddingInput);
+	Person_Movement->AddInputVector(AddingInput);
 	UE_LOG(LogTemp, Warning, TEXT("New Position (%f, %f, %f)"), SpeedX, SpeedZ);
 	//SetActorLocation(Position);
 }

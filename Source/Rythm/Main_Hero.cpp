@@ -1,8 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GameFramework/SpringArmComponent.h"
-#include "PaperFlipbookComponent.h"
-#include "PaperSpriteComponent.h"
 #include "Main_Hero.h"
 
 AMain_Hero::AMain_Hero()
@@ -15,14 +13,14 @@ AMain_Hero::AMain_Hero()
 	SpringArm->bDoCollisionTest = false;
 	SpringArm->bUsePawnControlRotation = false;
 	SpringArm->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-	SpringArm->SetWorldRotation(FRotator(-90.0f, 45.0f, 130.0f));
+	SpringArm->SetWorldRotation(FRotator(0.0f, 90.0f, 0.0f));
 	
 	Camera_Component = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera_Component->bUsePawnControlRotation = false;
 	Camera_Component->ProjectionMode = ECameraProjectionMode::Orthographic;
-	Camera_Component->OrthoWidth = 1024.0f;
+	Camera_Component->OrthoWidth = 2048.0f;
 	Camera_Component->AspectRatio = 3.0f / 4.0f;
-	Camera_Component->SetWorldRotation(FRotator(-90.0f, 0.0f, 0.0f));
+	Camera_Component->SetWorldRotation(FRotator(0.0f, 0.0f, 0.0f));
 	Camera_Component->AttachToComponent(SpringArm,
 		FAttachmentTransformRules::KeepRelativeTransform,
 		USpringArmComponent::SocketName);

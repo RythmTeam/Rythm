@@ -5,10 +5,11 @@
 
 #include "Main_Hero.h"
 #include "Person_With_Camera.h"
+#include "Warrior_With_Camera.h"
 
 ARythmGameModeBase::ARythmGameModeBase()
 {
-	DefaultPawnClass = ConstructorHelpers::FClassFinder<APerson_With_Camera>(
-		TEXT("/Game/Blueprints/MyPerson_With_Camera_BP")).Class;
+	DefaultPawnClass = ConstructorHelpers::FClassFinder<AMain_Hero>(
+		TEXT("/Game/Blueprints/Main_Hero_BP")).Class;
 }
 

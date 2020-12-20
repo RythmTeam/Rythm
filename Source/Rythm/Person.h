@@ -26,7 +26,6 @@ private:
 	FVector2D RawMovementInput;
 };
 
-
 UCLASS()
 class RYTHM_API APerson : public APaperCharacter
 {

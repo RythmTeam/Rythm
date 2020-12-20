@@ -6,11 +6,8 @@
 #include "Person.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-
-
 #include "Person_With_Camera.generated.h"
-
-/**
+/*
  * 
  */
 UCLASS()
