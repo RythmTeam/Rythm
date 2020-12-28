@@ -25,6 +25,5 @@ AMain_Hero::AMain_Hero()
 		FAttachmentTransformRules::KeepRelativeTransform,
 		USpringArmComponent::SocketName);
 
-	Health_Value = 100.0f;
-	Damage_Value = 10.0f;
+	 
 }
