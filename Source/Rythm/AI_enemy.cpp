@@ -1,14 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 //#include "Main_Hero.h"
-#include "Enemy.h"
 #include "AI_enemy.h"
+#include "Enemy.h"
 
 
-void AAI_enemy::Tick(float DeltaTime)
+
+
+ void AAI_enemy::Tick(float DeltaTime)
 {
 	if(PawnAsEnemy)
 	{
+/*
 		if(AActor* Target=PawnAsEnemy->GetTarget())
 		{
 			// We do have a target. Shamble toward it and attempt violence! У нас есть цель. Тащитесь к нему и пытайтесь насилие!
@@ -17,6 +20,7 @@ void AAI_enemy::Tick(float DeltaTime)
 			float SidewaysDotToTarget = FVector::DotProduct(DirectionToTarget, PawnAsEnemy->GetActorRightVector());
 			float DeltaYawDesired = FMath::Atan2(SidewaysDotToTarget, DotToTarget);
 		}
+		*/
 	}
 }
 
@@ -31,3 +35,4 @@ void AAI_enemy::OnUnPossess()
 	Super::UnPossess();
 	PawnAsEnemy = nullptr;
 }
+

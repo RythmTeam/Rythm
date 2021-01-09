@@ -2,38 +2,62 @@
 
 #include "Main_Hero.h"
 #include "AI_enemy.h"
+
 #include "Enemy.h"
 
 
 
-AEnemy::AEnemy()
+AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 {
 	//Pawn is automatically possessed by an AI Controller whenever it is created
 	AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
 	Health_Value = 100.0f;
 	Damage_Value = 10.0f;
+	
+
+	SightSphere = PCIP.CreateDefaultSubobject<USphereComponent> (this,
+TEXT("SightSphere"));
+	SightSphere->AttachTo(RootComponent);
+	AttackRangeSphere = PCIP.CreateDefaultSubobject <USphereComponent>(this,
+    TEXT("AttackRangeSphere"));
+	AttackRangeSphere->AttachTo( RootComponent );
 }
 
-void AEnemy::Tick( float DeltaTime )
+void AEnemy::Tick( float DeltaSeconds )
 {
-	Super::Tick( DeltaTime );
+	Super::Tick( DeltaSeconds );
+	
+	// базовый интеллект: двигает монстра на игрока
+	AMain_Hero *Hero = Cast<AMain_Hero>( UGameplayStatics::GetPlayerPawn(GetWorld(), 0) );
+	if( !Hero ) return;
+	FVector toPlayer = Hero->GetActorLocation() - GetActorLocation();
 
+	float distanceToPlayer = toPlayer.Size();
+    // Если игрок не в SightSphere монстра,
+    // идём назад
+    if( distanceToPlayer > SightSphere->GetScaledSphereRadius() )
+    {
+    // Если игрок в не поля зрения,
+    // то монстр не может гнаться за ним
+    return;
+    }
+	
+	toPlayer /= distanceToPlayer;
+	//toPlayer.Normalize(); // reduce to unit vector
+
+	
+	// Собственно двигаем монстра на игрока
+	AddMovementInput(toPlayer, Person_MoveSpeed*DeltaSeconds);
+	// Обращение лицом к цели
+	// Получаете ротатор для поворачивания того,
+	// что смотрит в направлении игрока `toPlayer`
+	FRotator toPlayerRotation = toPlayer.Rotation();
+	toPlayerRotation.Pitch = 0; // 0 off the pitch
+	RootComponent->SetWorldRotation( toPlayerRotation );
+	GetSprite()->SetFlipbook(Running_Animation);
+	//Update_Person(DeltaSeconds);
+
+
+	//Update_Animation();
 }
 
-
-
-void AEnemy::SetTarget(AActor* NewTarget)
-{
-	TargetActor=NewTarget;
-	TargetHero= Cast<AMain_Hero>(NewTarget);
-}
-
-AActor* AEnemy::GetTarget()
-{
-	return TargetActor;
-}
-
-AMain_Hero* AEnemy::GetTargetAsHero()
-{
-	return TargetHero; 
-}

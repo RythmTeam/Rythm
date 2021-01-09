@@ -10,7 +10,8 @@
 /**
  * 
  */
-UCLASS()
+
+ UCLASS()
 class RYTHM_API AAI_enemy : public AAIController
 {
 	GENERATED_BODY()
