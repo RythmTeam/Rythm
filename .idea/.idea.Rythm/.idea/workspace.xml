@@ -5,20 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Flipbooks/enemy/Idle_e.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_Run.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_idle.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sprites/enemy_1lvl/Idle/Sprites_enemy_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sprites/enemy_1lvl/Idle/enemy_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.h" afterDir="false" />
-    </list>
+    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -331,6 +318,7 @@
       <workItem from="1610199657118" duration="264000" />
       <workItem from="1610223927024" duration="7709000" />
       <workItem from="1610233691042" duration="1024000" />
+      <workItem from="1610302518996" duration="240000" />
     </task>
     <servers />
   </component>
