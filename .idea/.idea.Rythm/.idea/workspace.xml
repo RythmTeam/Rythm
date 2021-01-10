@@ -5,26 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
-<<<<<<< Updated upstream
-      <change afterPath="$PROJECT_DIR$/Content/Flipbooks/enemy/Idle_e.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_Run.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Flipbooks/enemy/1_idle.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sprites/enemy_1lvl/Idle/Sprites_enemy_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sprites/enemy_1lvl/Idle/enemy_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.h" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
->>>>>>> Stashed changes
-    </list>
+    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,16 +15,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Controller.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/FloatingPawnMovement.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Pawn.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerStart.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Pawn.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Rythm/Warrior.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Controller.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Pawn.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/FloatingPawnMovement.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Rythm/Main_Hero.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerStart.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Rythm/Warrior.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -60,18 +41,15 @@
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Enemy.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" />
-<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" />
-=======
-      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
->>>>>>> Stashed changes
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lAM9C5fJ42cZPkMMJwQwCnX8Fl" />
@@ -332,7 +310,6 @@
       <workItem from="1608762432407" duration="684000" />
       <workItem from="1609002334574" duration="6175000" />
       <workItem from="1609104922250" duration="3841000" />
-<<<<<<< Updated upstream
       <workItem from="1609143043134" duration="19574000" />
       <workItem from="1609183418839" duration="11515000" />
       <workItem from="1610141139221" duration="3067000" />
@@ -341,13 +318,7 @@
       <workItem from="1610199657118" duration="264000" />
       <workItem from="1610223927024" duration="7709000" />
       <workItem from="1610233691042" duration="1024000" />
-=======
-      <workItem from="1609143043134" duration="19171000" />
-      <workItem from="1609953325059" duration="401000" />
-      <workItem from="1610045049659" duration="967000" />
-      <workItem from="1610123166444" duration="660000" />
-      <workItem from="1610156227188" duration="329000" />
->>>>>>> Stashed changes
+      <workItem from="1610302518996" duration="240000" />
     </task>
     <servers />
   </component>
