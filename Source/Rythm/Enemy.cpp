@@ -48,7 +48,8 @@ void AEnemy::Tick( float DeltaSeconds )
 
 	
 	// Собственно двигаем монстра на игрока
-	AddMovementInput(toPlayer, Person_Move_Speed*DeltaSeconds);
+// TODO: uncommend AddMovementInput
+	// AddMovementInput(toPlayer, Person_Move_Speed*DeltaSeconds);
 	// Обращение лицом к цели
 	// Получаете ротатор для поворачивания того,
 	// что смотрит в направлении игрока `toPlayer`

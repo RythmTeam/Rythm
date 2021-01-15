@@ -13,9 +13,15 @@ AWarrior::AWarrior()
 	Is_Warrior_Stopped_Attack = true;
 	Is_Warrior_Stopped_Block = true;
 
-	Right_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block"));
-	Left_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block1"));
+	Right_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block_1"));
+	Right_Block->SetRelativeLocation(FVector(75.0f, 0.0f, 0.0f));
+	Right_Block->SetBoxExtent(FVector(40.0f, 40.0f, 40.0f));
+	Right_Block->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 	
+	Left_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block_2"));
+	Left_Block->SetRelativeLocation(FVector(-75.0f, 0.0f, 0.0f));
+	Left_Block->SetBoxExtent(FVector(40.0f, 40.0f, 40.0f));
+	Left_Block->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 void AWarrior::Attack()
@@ -23,6 +29,7 @@ void AWarrior::Attack()
 	Is_Warrior_Started_Attack = true;
 	Is_Warrior_Stopped_Attack = false;
 	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
+	// Hits all overlapped persons
 	TArray<AActor*> Raw_Result;
 	GetOverlappingActors(Raw_Result, APerson::StaticClass());
 	TArray<APerson*> Pure_Result;

@@ -45,10 +45,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Animations")
 	UPaperFlipbook* Block_Animation;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attack")
+	UPROPERTY(VisibleAnywhere, Category = "Attack")
 	UBoxComponent* Right_Block;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attack")
+	UPROPERTY(VisibleAnywhere, Category = "Attack")
 	UBoxComponent* Left_Block;
 	
 	UFUNCTION()

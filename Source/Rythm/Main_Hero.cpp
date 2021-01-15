@@ -13,7 +13,7 @@ AMain_Hero::AMain_Hero()
 	SpringArm->bDoCollisionTest = false;
 	SpringArm->bUsePawnControlRotation = false;
 	SpringArm->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-	SpringArm->SetWorldRotation(FRotator(0.0f, 90.0f, 0.0f));
+	SpringArm->SetWorldRotation(FRotator(0.0f, -90.0f, 0.0f));
 	
 	Camera_Component = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera_Component->bUsePawnControlRotation = false;
