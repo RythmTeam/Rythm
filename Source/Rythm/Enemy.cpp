@@ -11,16 +11,17 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 {
 	//Pawn is automatically possessed by an AI Controller whenever it is created
 	AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	SightSphere = PCIP.CreateDefaultSubobject<USphereComponent> (this, TEXT("SightSphere"));
+	SightSphere->AttachTo(RootComponent);
+	AttackRangeSphere = PCIP.CreateDefaultSubobject <USphereComponent>(this, TEXT("AttackRangeSphere"));
+	AttackRangeSphere->AttachTo( RootComponent );
+
 	Health_Value = 100.0f;
 	Damage_Value = 10.0f;
-	
-
-	SightSphere = PCIP.CreateDefaultSubobject<USphereComponent> (this,
-TEXT("SightSphere"));
-	SightSphere->AttachTo(RootComponent);
-	AttackRangeSphere = PCIP.CreateDefaultSubobject <USphereComponent>(this,
-    TEXT("AttackRangeSphere"));
-	AttackRangeSphere->AttachTo( RootComponent );
+	Person_Move_Speed = 80.0f;
+	Attack_Frames_Amount = 9;
+	Person_Name = "Enemy";
 }
 
 void AEnemy::Tick( float DeltaSeconds )
@@ -38,7 +39,7 @@ void AEnemy::Tick( float DeltaSeconds )
     if( distanceToPlayer > SightSphere->GetScaledSphereRadius() )
     {
     // Если игрок в не поля зрения,
-    // то монстр не может гнаться за ним
+    // то монстр не может гнаться за ним	
     return;
     }
 	
@@ -47,7 +48,7 @@ void AEnemy::Tick( float DeltaSeconds )
 
 	
 	// Собственно двигаем монстра на игрока
-	AddMovementInput(toPlayer, Person_MoveSpeed*DeltaSeconds);
+	AddMovementInput(toPlayer, Person_Move_Speed*DeltaSeconds);
 	// Обращение лицом к цели
 	// Получаете ротатор для поворачивания того,
 	// что смотрит в направлении игрока `toPlayer`

@@ -8,24 +8,46 @@ AWarrior::AWarrior()
 {
 	//Attack_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Attack"));
 	//Block_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Block"));
-	
-	Damage_Value = 0.0f;
 	Is_Warrior_Started_Attack = false;
 	Is_Warrior_Started_Block = false;
 	Is_Warrior_Stopped_Attack = true;
 	Is_Warrior_Stopped_Block = true;
+
+	Right_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block"));
+	Left_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block1"));
+	
 }
 
 void AWarrior::Attack()
 {
 	Is_Warrior_Started_Attack = true;
 	Is_Warrior_Stopped_Attack = false;
+	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
+	TArray<AActor*> Raw_Result;
+	GetOverlappingActors(Raw_Result, APerson::StaticClass());
+	TArray<APerson*> Pure_Result;
+	for (auto& Iter : Raw_Result)
+	{
+		APerson* Some_Overlapped_Person = Cast<APerson>(Iter);
+		Pure_Result.Add(Some_Overlapped_Person);
+	}
+	for (auto Iter : Pure_Result)
+	{
+		Iter->Take_Damage(Damage_Value);
+	}
+	Raw_Result.Empty();
+	Pure_Result.Empty();
 }
 
 void AWarrior::Block()
 {
 	Is_Warrior_Started_Block = true;
 	Is_Warrior_Stopped_Block = false;
+}
+
+bool AWarrior::Is_Warrior_Blocking()
+{
+	return Is_Warrior_Started_Block;
 }
 
 void AWarrior::Update_Animation()
@@ -42,7 +64,6 @@ void AWarrior::Update_Animation()
 	else
 	{
 		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
-		UE_LOG(LogTemp, Warning, TEXT("Warrior speed squared (%f"), Player_Velocity.SizeSquared()); 
 		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
             Running_Animation : Idle_Animation;
 	}
@@ -61,7 +82,7 @@ void AWarrior::Tick(float DeltaTime)
 	static int32 Block_Frames = 0;
 	if(Is_Warrior_Started_Attack)
 	{
-		if(Attack_Frames == 23)
+		if(Attack_Frames == Attack_Frames_Amount)
 		{
 			Is_Warrior_Stopped_Attack = true;
 			Is_Warrior_Started_Attack = false;
@@ -71,9 +92,9 @@ void AWarrior::Tick(float DeltaTime)
 	}
 	else if (Is_Warrior_Started_Block)
 	{
-		if(Block_Frames == 10)
+		if(Block_Frames == Block_Frames_Amount)
 		{
-			Is_Warrior_Stopped_Attack = true;
+			Is_Warrior_Stopped_Block = true;
 			Is_Warrior_Started_Block = false;
 			Block_Frames = 0;
 		}

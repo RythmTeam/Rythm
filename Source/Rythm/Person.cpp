@@ -35,13 +35,28 @@ APerson::APerson()
 	Person_Movement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
 	
 	GetSprite()->SetIsReplicated(true);
-	bReplicates = true;	
+	bReplicates = true;
 }	
 
 // Called when the game starts or when spawned
 void APerson::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void APerson::Death()
+{
+	this->Destroy();
+}
+
+void APerson::Take_Damage(const float Taken_Damage)
+{
+	Health_Value -= Taken_Damage;
+	UE_LOG(LogTemp, Warning, TEXT("Got Damage %s"), *Person_Name);
+	if (Health_Value <= 0)
+	{
+		Death();
+	}
 }
 
 void APerson::Update_Animation()
@@ -68,25 +83,21 @@ void APerson::Update_Person(const float& DeltaTime)
 	{
 		if (TravelDirection < 0.0f)
 		{
+			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
-			UE_LOG(LogTemp, Warning, TEXT("Rotated"));
 		}
 		else if (TravelDirection > 0.0f)
 		{
+			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
-			UE_LOG(LogTemp, Warning, TEXT("Straight"));
 		}
 	}
 	// Move person
-	//FVector Position = GetActorLocation();
-	const float SpeedX = PlayerVelocity.X * Person_MoveSpeed * DeltaTime;
-	const float SpeedZ = PlayerVelocity.Y * Person_MoveSpeed * DeltaTime;
-	//Position.X += SpeedX;
-	//Position.Z += SpeedZ;
+	const float SpeedX = PlayerVelocity.X * Person_Move_Speed * DeltaTime;
+	const float SpeedZ = PlayerVelocity.Y * Person_Move_Speed * DeltaTime;
+
 	const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
 	Person_Movement->AddInputVector(AddingInput);
-	UE_LOG(LogTemp, Warning, TEXT("New Position (%f, %f, %f)"), SpeedX, SpeedZ);
-	//SetActorLocation(Position);
 }
 
 
@@ -95,8 +106,8 @@ void APerson::Tick(const float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	PersonInput.Sanitize();
-	UE_LOG(LogTemp, Warning, TEXT("Movement input: (%f, %f)"),
-		PersonInput.PureMovementInput.X, PersonInput.PureMovementInput.Y);
+	//UE_LOG(LogTemp, Warning, TEXT("Movement input: (%f, %f)"),
+	//	PersonInput.PureMovementInput.X, PersonInput.PureMovementInput.Y);
 
 	Update_Person(DeltaTime);
 }

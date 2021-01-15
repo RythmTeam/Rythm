@@ -29,7 +29,5 @@ public:
 	USphereComponent* AttackRangeSphere;
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
-
-
-
+	
 };

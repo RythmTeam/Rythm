@@ -5,7 +5,20 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="" />
+    <list default="true" id="308996fd-0e14-4b5b-a2f8-80fff6116edf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rythm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Main_Hero_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Main_Hero_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/enemy/enemy_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Flipbooks/Main_Hero/Main_Hero_Attack_flipbook.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Flipbooks/Main_Hero/Main_Hero_Attack_flipbook.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/1_lvl.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,16 +28,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Pawn.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Controller.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Pawn.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/FloatingPawnMovement.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Pawn.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Rythm/Main_Hero.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerStart.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerStart.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Pawn.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Rythm/Warrior.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Rythm/Main_Hero.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -32,7 +46,6 @@
       <option value="$PROJECT_DIR$/Source/Rythm/Test.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Hero.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Hero.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/PersonStatics.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/PersonStatics.h" />
@@ -41,15 +54,16 @@
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person_With_Camera.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/AI_enemy.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lAM9C5fJ42cZPkMMJwQwCnX8Fl" />
@@ -319,6 +333,9 @@
       <workItem from="1610223927024" duration="7709000" />
       <workItem from="1610233691042" duration="1024000" />
       <workItem from="1610302518996" duration="240000" />
+      <workItem from="1610372692860" duration="3659000" />
+      <workItem from="1610639608634" duration="445000" />
+      <workItem from="1610640407970" duration="20970000" />
     </task>
     <servers />
   </component>

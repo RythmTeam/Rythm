@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "PaperFlipbookComponent.h"
-#include "Components/ArrowComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "Person.generated.h"
 /**
@@ -33,7 +32,7 @@ class RYTHM_API APerson : public APaperCharacter
 	// Person can move and has 2 represents of current statuses with flipbooks
 	// Person is a physical object, so it has collision profile
 	// Person has a direction of gaze, so it has arrow component
-	GENERATED_BODY()
+	GENERATED_BODY()	
 public:
 	// Sets default values for this pawn's properties
 	APerson();
@@ -41,14 +40,18 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	// Health Value
+	float Health_Value;
+
+	// Move speed
+	float Person_Move_Speed;
+
+	// Name
+	FString Person_Name;
 
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "Characters")
-	float Person_MoveSpeed;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Characters")
-	int32 Health_Value;
-	    
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
 	class UPaperFlipbook* Idle_Animation;
     
@@ -56,22 +59,28 @@ public:
 	class UPaperFlipbook* Running_Animation;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
-	class UArrowComponent* Person_Direction;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	class UFloatingPawnMovement* Person_Movement;
+//////////////_Damage_logic__
+	UFUNCTION()
+	void Take_Damage(const float Taken_Damage);
 
+	UFUNCTION()
+	virtual void Death();
+//////////////_______________
+//////////////_Movement_Logic_
 	UFUNCTION()
     void Vertical_Movement(float Value);
 
 	UFUNCTION()
     void Horizontal_Movement(float Value);
-
+//////////////_______________
+//////////////_Animation_Logic_
 	UFUNCTION()
     virtual void Update_Animation();
 
 	UFUNCTION()
 	void Update_Person(const float& DeltaTime);
+//////////////________________
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
