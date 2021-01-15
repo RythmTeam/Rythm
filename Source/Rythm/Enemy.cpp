@@ -1,11 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Enemy.h"
 #include "Main_Hero.h"
 #include "AI_enemy.h"
-
-#include "Enemy.h"
-
-
 
 AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 {
@@ -13,9 +10,8 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 	AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
 
 	SightSphere = PCIP.CreateDefaultSubobject<USphereComponent> (this, TEXT("SightSphere"));
-	SightSphere->AttachTo(RootComponent);
-	AttackRangeSphere = PCIP.CreateDefaultSubobject <USphereComponent>(this, TEXT("AttackRangeSphere"));
-	AttackRangeSphere->AttachTo( RootComponent );
+	SightSphere->AttachToComponent(RootComponent ,FAttachmentTransformRules::KeepRelativeTransform);
+	SightSphere->SetSphereRadius(400.0f);
 
 	Health_Value = 100.0f;
 	Damage_Value = 10.0f;

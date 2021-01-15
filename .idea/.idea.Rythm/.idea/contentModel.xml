@@ -43523,6 +43523,12 @@
       <e p="Rythm.uproject" t="Include" />
       <e p="Source" t="Include">
         <e p="Rythm" t="Include">
+          <e p="AEnemy.cpp" t="Include" />
+          <e p="AEnemy.h" t="Include" />
+          <e p="AI_enemy.cpp" t="Include" />
+          <e p="AI_enemy.h" t="Include" />
+          <e p="Enemy.cpp" t="Include" />
+          <e p="Enemy.h" t="Include" />
           <e p="Main_Hero.cpp" t="Include" />
           <e p="Main_Hero.h" t="Include" />
           <e p="Person.cpp" t="Include" />

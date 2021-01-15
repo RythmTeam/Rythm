@@ -50,7 +50,13 @@ protected:
 	// Name
 	FString Person_Name;
 
+	// Direction of looking
+	bool Direction;
+	// True == right
+	// False == left
+	
 public:
+	
 	
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animations")
 	class UPaperFlipbook* Idle_Animation;
@@ -60,27 +66,27 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	class UFloatingPawnMovement* Person_Movement;
-//////////////_Damage_logic__
+//////////////_Damage_logic___
 	UFUNCTION()
 	void Take_Damage(const float Taken_Damage);
 
 	UFUNCTION()
 	virtual void Death();
-//////////////_______________
+//////////////________________
 //////////////_Movement_Logic_
 	UFUNCTION()
     void Vertical_Movement(float Value);
 
 	UFUNCTION()
     void Horizontal_Movement(float Value);
-//////////////_______________
+//////////////_________________
 //////////////_Animation_Logic_
 	UFUNCTION()
     virtual void Update_Animation();
 
 	UFUNCTION()
 	void Update_Person(const float& DeltaTime);
-//////////////________________
+//////////////_________________
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

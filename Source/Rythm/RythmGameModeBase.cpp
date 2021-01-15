@@ -4,8 +4,6 @@
 #include "RythmGameModeBase.h"
 
 #include "Main_Hero.h"
-#include "Person_With_Camera.h"
-#include "Warrior_With_Camera.h"
 
 ARythmGameModeBase::ARythmGameModeBase()
 {

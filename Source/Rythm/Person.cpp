@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Person.h"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
-#include "Person.h"
 
 //////////////////////// Person Input Custom Component
 void FPersonInput::MoveHorizontal(const float Value)
@@ -22,8 +22,8 @@ void FPersonInput::Sanitize()
 	PureMovementInput = PureMovementInput.GetSafeNormal();
 	RawMovementInput.Set(0.0f, 0.0f);
 }
-
 ////////////////////////
+
 APerson::APerson()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -84,11 +84,13 @@ void APerson::Update_Person(const float& DeltaTime)
 		if (TravelDirection < 0.0f)
 		{
 			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
+			Direction = false;
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 		}
 		else if (TravelDirection > 0.0f)
 		{
 			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+			Direction = true; 
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 		}
 	}

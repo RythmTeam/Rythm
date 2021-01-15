@@ -20,8 +20,6 @@ class RYTHM_API AWarrior : public APerson
 	// Warrior has a damage;
 
 	//TODO: change number of block frames
-	//TODO: rework bool variables
-	//TODO: Attack
 	//TODO: Block
 	GENERATED_BODY()
 

@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
+
 #include "CoreMinimal.h"
 #include "Warrior.h"
-//#include "Main_Hero.h"
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Enemy.generated.h"
@@ -24,9 +24,7 @@ public:
 	// Расстояние на котором он видит
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
 	USphereComponent* SightSphere;
-	// Дальность его атаки. Визуализируемая в редакторе как сфера
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
-	USphereComponent* AttackRangeSphere;
+
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 	

@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-#include "PaperFlipbookComponent.h"
 #include "Warrior.h"
+#include "PaperFlipbookComponent.h"
+
 
 AWarrior::AWarrior()
 {
@@ -31,7 +31,14 @@ void AWarrior::Attack()
 	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
 	// Hits all overlapped persons
 	TArray<AActor*> Raw_Result;
-	GetOverlappingActors(Raw_Result, APerson::StaticClass());
+	if (Direction)
+	{
+		Right_Block->GetOverlappingActors(Raw_Result, APerson::StaticClass());
+	}
+	else
+	{
+		Left_Block->GetOverlappingActors(Raw_Result, APerson::StaticClass());
+	}
 	TArray<APerson*> Pure_Result;
 	for (auto& Iter : Raw_Result)
 	{
