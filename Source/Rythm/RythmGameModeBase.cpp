@@ -10,6 +10,6 @@
 ARythmGameModeBase::ARythmGameModeBase()
 {
 	DefaultPawnClass = ConstructorHelpers::FClassFinder<AMain_Hero>(
-		TEXT("/Game/Blueprints/Main_Hero_BP")).Class;
+		TEXT("/Game/Blueprints/AMain_Hero_BP")).Class;
 }
 
