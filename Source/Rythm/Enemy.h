@@ -24,6 +24,5 @@ public:
 	USphereComponent* SightSphere;
 
 	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;
-	
+	virtual void Tick( float DeltaSeconds ) override;	
 };

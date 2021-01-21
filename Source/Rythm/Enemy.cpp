@@ -30,12 +30,12 @@ void AEnemy::Tick( float DeltaSeconds )
 	}
 	*/
 	AMain_Hero *Hero = Cast<AMain_Hero>( UGameplayStatics::GetPlayerPawn(GetWorld(), 0) );
-	if( !Hero ) return;
+	if (!Hero) return;
 	FVector ToPlayer = Hero->GetActorLocation() - GetActorLocation();
 
-	const float distanceToPlayer = ToPlayer.Size();
+	const float DistanceToPlayer = ToPlayer.Size();
 
-    if( distanceToPlayer > SightSphere->GetScaledSphereRadius() )
+    if( DistanceToPlayer > SightSphere->GetScaledSphereRadius() )
     {
     	GetSprite()->SetFlipbook(Idle_Animation);
     	return;

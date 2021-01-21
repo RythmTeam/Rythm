@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Enemy.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Rythm/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Person.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Rythm/Warrior.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Rythm/Warrior.h" afterDir="false" />
     </list>
@@ -54,12 +53,12 @@
       <option value="$PROJECT_DIR$/Source/Rythm/RythmGameModeBase.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Main_Hero.h" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
       <option value="$PROJECT_DIR$/Source/Rythm/Warrior.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Warrior.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Person.cpp" />
+      <option value="$PROJECT_DIR$/Source/Rythm/Enemy.h" />
       <option value="$PROJECT_DIR$/Source/Rythm/Enemy.cpp" />
-      <option value="$PROJECT_DIR$/Source/Rythm/Person.h" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lAM9C5fJ42cZPkMMJwQwCnX8Fl" />
@@ -343,7 +342,7 @@
       <workItem from="1611169990680" duration="3067000" />
       <workItem from="1611185723785" duration="9148000" />
       <workItem from="1611233341089" duration="5569000" />
-      <workItem from="1611247368160" duration="9221000" />
+      <workItem from="1611247368160" duration="12966000" />
     </task>
     <servers />
   </component>

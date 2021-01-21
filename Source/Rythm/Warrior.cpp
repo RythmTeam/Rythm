@@ -27,14 +27,10 @@ AWarrior::AWarrior()
 	Left_Block->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
-void AWarrior::Attack()
+TArray<APerson*> AWarrior::Get_Hittable_Persons(const bool& Block)
 {
-	Is_Warrior_Started_Attack = true;
-	Is_Warrior_Stopped_Attack = false;
-	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
-	// Hits all overlapped persons
 	TArray<AActor*> Raw_Result;
-	if (Direction)
+	if (Block)
 	{
 		Right_Block->GetOverlappingActors(Raw_Result, APerson::StaticClass());
 	}
@@ -48,12 +44,22 @@ void AWarrior::Attack()
 		APerson* Some_Overlapped_Person = Cast<APerson>(Iter);
 		Pure_Result.Add(Some_Overlapped_Person);
 	}
-	for (auto Iter : Pure_Result)
+	return Pure_Result;
+}
+
+void AWarrior::Attack()
+{
+	Is_Warrior_Started_Attack = true;
+	Is_Warrior_Stopped_Attack = false;
+	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
+	// Hits all overlapped persons
+
+	TArray<APerson*> Hittable_Persons = Get_Hittable_Persons(Direction);
+	
+	for (auto Iter : Hittable_Persons)
 	{
 		Iter->Take_Damage(Damage_Value);
 	}
-	Raw_Result.Empty();
-	Pure_Result.Empty();
 }
 
 void AWarrior::Block()
@@ -67,39 +73,9 @@ bool AWarrior::Is_Warrior_Blocking()
 	return Is_Warrior_Started_Block;
 }
 
-void AWarrior::Update_Animation()
+// TODO: Change Number of Block Frames
+void AWarrior::Iterate_Combat_Status()
 {
-	UPaperFlipbook* Desired_Animation;
-	if(!Is_Warrior_Stopped_Attack)
-	{
-		Desired_Animation = Attack_Animation;
-	}
-	else if(!Is_Warrior_Stopped_Block)
-	{
-		Desired_Animation = Block_Animation;
-	}
-	else
-	{
-		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
-		if (Person_Name != "Main_Hero")
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Velocity in AW::Upd_Anim size squared %f"),
-             PersonInput.PureMovementInput.SizeSquared());
-		}
-		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-            Running_Animation : Idle_Animation;
-	}
-	if (GetSprite()->GetFlipbook() != Desired_Animation)
-	{
-		GetSprite()->SetFlipbook(Desired_Animation);
-	}
-}
-
-void AWarrior::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	// TODO: Change Number of Block Frames
-
 	if(Is_Warrior_Started_Attack)
 	{
 		if(Attack_Frames == Attack_Frames_Amount)
@@ -120,6 +96,43 @@ void AWarrior::Tick(float DeltaTime)
 		}
 		else Block_Frames++;
 	}
+}
+
+void AWarrior::Update_Animation()
+{
+	UPaperFlipbook* Desired_Animation;
+	if(!Is_Warrior_Stopped_Attack)
+	{
+		Desired_Animation = Attack_Animation;
+	}
+	else if(!Is_Warrior_Stopped_Block)
+	{
+		Desired_Animation = Block_Animation;
+	}
+	else
+	{
+		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
+		/*
+		if (Person_Name != "Main_Hero")
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Velocity in AW::Upd_Anim size squared %f"),
+             PersonInput.PureMovementInput.SizeSquared());
+		}
+		*/
+		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
+            Running_Animation : Idle_Animation;
+	}
+	if (GetSprite()->GetFlipbook() != Desired_Animation)
+	{
+		GetSprite()->SetFlipbook(Desired_Animation);
+	}
+}
+
+void AWarrior::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	Iterate_Combat_Status();
+	
 	Update_Person(DeltaTime);
 }
 

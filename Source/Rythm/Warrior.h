@@ -60,6 +60,12 @@ public:
 	UFUNCTION()
 	virtual bool Is_Warrior_Blocking();
 
+	UFUNCTION()
+	virtual void Iterate_Combat_Status();
+
+	UFUNCTION()
+	virtual TArray<APerson*> Get_Hittable_Persons(const bool& Block);
+
 	// Called every frame
 	// Overrides to add attack & block animations
 	virtual void Update_Animation() override;

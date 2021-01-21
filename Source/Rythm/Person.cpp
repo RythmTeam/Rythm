@@ -78,11 +78,13 @@ void APerson::Update_Person(const float& DeltaTime)
 
 	// Now setup the rotation of the controller based on the direction we are travelling
 	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;
+	/*
 	if (Person_Name != "Main_Hero")
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Velocity in Per::Upd_Pers size squared %f"),
          PersonInput.PureMovementInput.SizeSquared());
 	}
+	*/
 	const float TravelDirection = PlayerVelocity.X;
 	// Set the rotation so that the character faces his direction of travel.
 	if (Controller != nullptr)
