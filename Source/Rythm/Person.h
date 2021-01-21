@@ -16,7 +16,7 @@ struct FPersonInput
 	GENERATED_BODY()
 public:
 	
-	FVector2D PureMovementInput;
+	FVector2D	PureMovementInput;
 	void Sanitize();
 	void MoveHorizontal(float Value);
 	void MoveVertical(float Value);

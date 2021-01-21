@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Warrior.h"
 #include "Components/SphereComponent.h"
-#include "Kismet/GameplayStatics.h"
 #include "Enemy.generated.h"
 
 /**
@@ -21,7 +20,6 @@ public:
 	// Called to bind functionality to input
 	//virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
-	// Расстояние на котором он видит
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
 	USphereComponent* SightSphere;
 

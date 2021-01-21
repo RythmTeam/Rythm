@@ -62,6 +62,7 @@ void APerson::Take_Damage(const float Taken_Damage)
 void APerson::Update_Animation()
 {
 	const FVector2D Player_Velocity = PersonInput.PureMovementInput;
+	
 	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
         Running_Animation : Idle_Animation;
 	if (GetSprite()->GetFlipbook() != Desired_Animation)
@@ -76,20 +77,23 @@ void APerson::Update_Person(const float& DeltaTime)
 	Update_Animation();
 
 	// Now setup the rotation of the controller based on the direction we are travelling
-	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;	
-	const float TravelDirection = PlayerVelocity.X;;
+	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;
+	if (Person_Name != "Main_Hero")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Velocity in Per::Upd_Pers size squared %f"),
+         PersonInput.PureMovementInput.SizeSquared());
+	}
+	const float TravelDirection = PlayerVelocity.X;
 	// Set the rotation so that the character faces his direction of travel.
 	if (Controller != nullptr)
 	{
 		if (TravelDirection < 0.0f)
 		{
-			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 			Direction = false;
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 		}
 		else if (TravelDirection > 0.0f)
 		{
-			//GetRootComponent()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 			Direction = true; 
 			GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 		}
@@ -100,6 +104,12 @@ void APerson::Update_Person(const float& DeltaTime)
 
 	const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
 	Person_Movement->AddInputVector(AddingInput);
+	/*
+	if (Person_Name == "Enemy")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Enemy::Tick() end"));
+	}
+	*/
 }
 
 

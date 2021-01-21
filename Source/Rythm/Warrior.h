@@ -24,6 +24,8 @@ class RYTHM_API AWarrior : public APerson
 	GENERATED_BODY()
 
 protected:
+	int32 Attack_Frames;
+	int32 Block_Frames;
 
 	int32 Attack_Frames_Amount;
 	int32 Block_Frames_Amount;

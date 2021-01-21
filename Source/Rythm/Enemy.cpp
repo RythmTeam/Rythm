@@ -2,6 +2,7 @@
 
 #include "Enemy.h"
 #include "Main_Hero.h"
+#include "Kismet/GameplayStatics.h"
 #include "AI_enemy.h"
 
 AEnemy::AEnemy(const class FObjectInitializer& PCIP)
@@ -15,47 +16,43 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 
 	Health_Value = 100.0f;
 	Damage_Value = 10.0f;
-	Person_Move_Speed = 80.0f;
+	Person_Move_Speed = 20.0f;
 	Attack_Frames_Amount = 9;
 	Person_Name = "Enemy";
 }
 
 void AEnemy::Tick( float DeltaSeconds )
 {
-	Super::Tick( DeltaSeconds );
-	
-	// базовый интеллект: двигает монстра на игрока
+	/*
+	if (Person_Name == "Enemy")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Enemy::Tick() begin"));
+	}
+	*/
 	AMain_Hero *Hero = Cast<AMain_Hero>( UGameplayStatics::GetPlayerPawn(GetWorld(), 0) );
 	if( !Hero ) return;
-	FVector toPlayer = Hero->GetActorLocation() - GetActorLocation();
+	FVector ToPlayer = Hero->GetActorLocation() - GetActorLocation();
 
-	float distanceToPlayer = toPlayer.Size();
-    // Если игрок не в SightSphere монстра,
-    // идём назад
+	const float distanceToPlayer = ToPlayer.Size();
+
     if( distanceToPlayer > SightSphere->GetScaledSphereRadius() )
     {
-    // Если игрок в не поля зрения,
-    // то монстр не может гнаться за ним	
-    return;
+    	GetSprite()->SetFlipbook(Idle_Animation);
+    	return;
     }
 	
-	toPlayer /= distanceToPlayer;
-	//toPlayer.Normalize(); // reduce to unit vector
+	ToPlayer.Normalize();
 
-	
-	// Собственно двигаем монстра на игрока
-// TODO: uncommend AddMovementInput
-	// AddMovementInput(toPlayer, Person_Move_Speed*DeltaSeconds);
-	// Обращение лицом к цели
-	// Получаете ротатор для поворачивания того,
-	// что смотрит в направлении игрока `toPlayer`
-	FRotator toPlayerRotation = toPlayer.Rotation();
-	toPlayerRotation.Pitch = 0; // 0 off the pitch
-	RootComponent->SetWorldRotation( toPlayerRotation );
-	GetSprite()->SetFlipbook(Running_Animation);
-	//Update_Person(DeltaSeconds);
-
-
-	//Update_Animation();
+	ToPlayer.Y = ToPlayer.Z;
+	const FVector2D Input2D(ToPlayer);
+	PersonInput.PureMovementInput = Input2D;
+	/*
+	if (Person_Name != "Main_Hero")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Velocity in AEn::Tick size squared %f"),
+         PersonInput.PureMovementInput.SizeSquared());
+	}
+	*/
+	Update_Person(DeltaSeconds);
 }
 
