@@ -16,6 +16,21 @@ void FPersonInput::MoveVertical(const float Value)
 	RawMovementInput.Y += Value;
 }
 
+void FPersonInput::LockMovement()
+{
+	Is_Move_Locked = true;
+}
+
+void FPersonInput::UnlockMovement()
+{
+	Is_Move_Locked = false;
+}
+
+FPersonInput::FPersonInput()
+{
+	Is_Move_Locked = false;
+}
+
 void FPersonInput::Sanitize()
 {
 	PureMovementInput = RawMovementInput.ClampAxes(-1.0f, 1.0f);

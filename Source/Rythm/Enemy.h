@@ -24,5 +24,13 @@ public:
 	USphereComponent* SightSphere;
 
 	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;	
+	virtual void Tick( float DeltaSeconds ) override;
+
+	UFUNCTION()
+	virtual void Wait_Frames(const int32& Frame_To_Wait);
+protected:
+
+	bool Attack_Signal;
+	bool Is_Waiting;
+	int32 Waiting_Frames_Amount;
 };

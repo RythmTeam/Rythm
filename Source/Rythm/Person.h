@@ -15,13 +15,16 @@ struct FPersonInput
 {
 	GENERATED_BODY()
 public:
-	
-	FVector2D	PureMovementInput;
+	FVector2D PureMovementInput;
 	void Sanitize();
 	void MoveHorizontal(float Value);
 	void MoveVertical(float Value);
+	void LockMovement();
+	void UnlockMovement();
+	FPersonInput();
+
 private:
-	
+	bool Is_Move_Locked;
 	FVector2D RawMovementInput;
 };
 
@@ -40,16 +43,12 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
 	// Health Value
 	float Health_Value;
-
 	// Move speed
 	float Person_Move_Speed;
-
 	// Name
 	FString Person_Name;
-
 	// Direction of looking
 	bool Direction;
 	// True == right
