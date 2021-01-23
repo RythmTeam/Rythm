@@ -19,9 +19,9 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 	Health_Value = 100.0f;
 	Damage_Value = 0.0f;
 	Person_Move_Speed = 15.0f;
-	Attack_Frames_Amount = 20;
+	Attack_Frames_Amount = 40;
 	Person_Name = "Enemy";
-	Warrior_Attack_Cooldown = 50;
+	Warrior_Attack_Cooldown = 100;
 	Warrior_Block_Cooldown = 25;
 }
 

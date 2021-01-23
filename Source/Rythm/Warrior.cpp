@@ -132,7 +132,7 @@ void AWarrior::Iterate_Combat_Status()
 			Current_Attack_Frame = 0;
 		}
 		else Current_Attack_Frame++;
-		if (Person_Name == "Main_Hero")
+		if (Person_Name == "Enemy")
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Attack frame %i"),
              Current_Attack_Frame);
