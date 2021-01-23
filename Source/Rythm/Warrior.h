@@ -24,12 +24,16 @@ class RYTHM_API AWarrior : public APerson
 	GENERATED_BODY()
 
 protected:
-	int32 Attack_Frames;
-	int32 Block_Frames;
+	int Current_Attack_Frame;
+	int Current_Block_Frame;
 
 	int32 Attack_Frames_Amount;
 	int32 Block_Frames_Amount;
 	int32 Damage_Value;
+	int32 Attack_Cooldown_Frames;
+	int32 Block_Cooldown_Frames;
+	int32 Warrior_Attack_Cooldown;
+	int32 Warrior_Block_Cooldown;
 	
 	bool Is_Warrior_Started_Attack;
 	bool Is_Warrior_Started_Block;
@@ -64,11 +68,15 @@ public:
 	virtual void Iterate_Combat_Status();
 
 	UFUNCTION()
+	virtual void Iterate_Cooldown_Status();
+
+	virtual void Set_Status_Animation() override;
+
+	UFUNCTION()
 	virtual TArray<APerson*> Get_Hittable_Persons(const bool& Block);
 
 	// Called every frame
 	// Overrides to add attack & block animations
-	virtual void Update_Animation() override;
 
 	// Overrides to add attack & block actions;
 	virtual void Tick(float DeltaTime) override;

@@ -32,4 +32,6 @@ AMain_Hero::AMain_Hero()
 	Person_Move_Speed = 20.0f;
 	Damage_Value = 10.0f;
 	Person_Name = "Main_Hero";
+	Warrior_Attack_Cooldown = 50;
+	Warrior_Block_Cooldown = 25;
 }

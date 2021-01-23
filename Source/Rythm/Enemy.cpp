@@ -18,10 +18,11 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 	Is_Waiting = false;
 	Health_Value = 100.0f;
 	Damage_Value = 0.0f;
-	Person_Move_Speed = 30.0f;
-	Attack_Frames = 0;
-	Attack_Frames_Amount = 9;
+	Person_Move_Speed = 15.0f;
+	Attack_Frames_Amount = 20;
 	Person_Name = "Enemy";
+	Warrior_Attack_Cooldown = 50;
+	Warrior_Block_Cooldown = 25;
 }
 
 void AEnemy::Wait_Frames(const int32& Frame_To_Wait)
@@ -38,20 +39,6 @@ void AEnemy::Tick(float DeltaSeconds)
 		UE_LOG(LogTemp, Warning, TEXT("Enemy::Tick() begin"));
 	}
 	*/
-	if (Is_Waiting)
-	{
-		if (Waiting_Frames_Amount != 0)
-		{
-			Waiting_Frames_Amount--;
-			GetSprite()->SetFlipbook(Idle_Animation);
-			return;
-		}
-		else
-		{
-			Is_Waiting = false;
-			Attack_Signal = true;
-		}
-	}
 	AMain_Hero *Hero = Cast<AMain_Hero>( UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	if (!Hero) return;
 	FVector ToPlayerVector = Hero->GetActorLocation() - GetActorLocation();
@@ -70,15 +57,9 @@ void AEnemy::Tick(float DeltaSeconds)
 	{
 		Count++;
 	}
-	if (Count != 0)
-	{
-		Wait_Frames(30);
-	}
-
-	if (Attack_Signal == true)
+	if(Count > 0) 
 	{
 		Attack();
-		Attack_Signal = false;
 	}
 	
 	Iterate_Combat_Status();
@@ -95,6 +76,8 @@ void AEnemy::Tick(float DeltaSeconds)
          PersonInput.PureMovementInput.SizeSquared());
 	}
 	*/
-	Update_Person(DeltaSeconds);
+	Move_By_Input(DeltaSeconds);
+	Set_Status_Animation();
+	Iterate_Cooldown_Status();
 }
 

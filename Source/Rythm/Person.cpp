@@ -51,7 +51,67 @@ APerson::APerson()
 	
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
-}	
+
+	Current_Status = "Idle";
+	Is_Status_Change_Locked = false;
+}
+
+void APerson::Move_By_Input(const float& DeltaTime)
+{
+	if (Is_Movement_Locked)
+	{
+		PersonInput.PureMovementInput.Set(0.0f, 0.0f);
+		if (!Is_Status_Change_Locked) Current_Status = "Idle";
+	}
+	else
+	{
+		const FVector2D PlayerVelocity = PersonInput.PureMovementInput;
+		const float SpeedX = PlayerVelocity.X * Person_Move_Speed * DeltaTime;
+		const float SpeedZ = PlayerVelocity.Y * Person_Move_Speed * DeltaTime;
+		/*
+		if (Person_Name == "Main_Hero")
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Speeds by input (%f, %f)"),
+             SpeedX, SpeedZ);
+		}
+		*/
+		const float TravelDirection = PlayerVelocity.X;
+		
+		if (TravelDirection < 0.0f) Direction = false;
+		else if (TravelDirection > 0.0f) Direction = true; 
+
+		const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
+		if (AddingInput.SizeSquared() == 0)
+		{
+			if (!Is_Status_Change_Locked) Current_Status = "Idle";
+		}
+		else
+		{
+			Person_Movement->AddInputVector(AddingInput);
+			if (!Is_Status_Change_Locked) Current_Status = "Run";
+		}
+	}
+}
+
+void APerson::Set_Status_Animation()
+{
+	if (Current_Status == "Idle")
+	{
+		GetSprite()->SetFlipbook(Idle_Animation);
+	}
+	else if (Current_Status == "Run")
+	{
+		GetSprite()->SetFlipbook(Running_Animation);
+	}
+	if (Direction)
+	{
+		GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+	}
+	else
+	{
+		GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
+	}
+}
 
 // Called when the game starts or when spawned
 void APerson::BeginPlay()
@@ -74,62 +134,6 @@ void APerson::Take_Damage(const float Taken_Damage)
 	}
 }
 
-void APerson::Update_Animation()
-{
-	const FVector2D Player_Velocity = PersonInput.PureMovementInput;
-	
-	UPaperFlipbook* Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-        Running_Animation : Idle_Animation;
-	if (GetSprite()->GetFlipbook() != Desired_Animation)
-	{
-		GetSprite()->SetFlipbook(Desired_Animation);
-	}
-}
-
-void APerson::Update_Person(const float& DeltaTime)
-{
-	// Update animation to match the motion
-	Update_Animation();
-
-	// Now setup the rotation of the controller based on the direction we are travelling
-	const FVector2D PlayerVelocity = PersonInput.PureMovementInput;
-	/*
-	if (Person_Name != "Main_Hero")
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Velocity in Per::Upd_Pers size squared %f"),
-         PersonInput.PureMovementInput.SizeSquared());
-	}
-	*/
-	const float TravelDirection = PlayerVelocity.X;
-	// Set the rotation so that the character faces his direction of travel.
-	if (Controller != nullptr)
-	{
-		if (TravelDirection < 0.0f)
-		{
-			Direction = false;
-			GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
-		}
-		else if (TravelDirection > 0.0f)
-		{
-			Direction = true; 
-			GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
-		}
-	}
-	// Move person
-	const float SpeedX = PlayerVelocity.X * Person_Move_Speed * DeltaTime;
-	const float SpeedZ = PlayerVelocity.Y * Person_Move_Speed * DeltaTime;
-
-	const FVector AddingInput(SpeedX, 0.0f, SpeedZ);
-	Person_Movement->AddInputVector(AddingInput);
-	/*
-	if (Person_Name == "Enemy")
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Enemy::Tick() end"));
-	}
-	*/
-}
-
-
 // Called every frame
 void APerson::Tick(const float DeltaTime)
 {
@@ -138,15 +142,16 @@ void APerson::Tick(const float DeltaTime)
 	//UE_LOG(LogTemp, Warning, TEXT("Movement input: (%f, %f)"),
 	//	PersonInput.PureMovementInput.X, PersonInput.PureMovementInput.Y);
 
-	Update_Person(DeltaTime);
+	Move_By_Input(DeltaTime);
+	Set_Status_Animation();
 }
 
-void APerson::Horizontal_Movement(float Value)
+void APerson::Horizontal_Input(float Value)
 {
 	PersonInput.MoveHorizontal(Value);
 }
 
-void APerson::Vertical_Movement(float Value)
+void APerson::Vertical_Input(float Value)
 {
 	PersonInput.MoveVertical(Value);
 }
@@ -156,6 +161,6 @@ void APerson::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Movement);
-	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Movement);
+	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Input);
+	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Input);
 }

@@ -53,6 +53,9 @@ protected:
 	bool Direction;
 	// True == right
 	// False == left
+	// Checks and sets current animation
+	FString Current_Status; // Idle // Run // Attack // Block
+	bool Is_Movement_Locked;
 	
 public:
 	
@@ -74,17 +77,18 @@ public:
 //////////////________________
 //////////////_Movement_Logic_
 	UFUNCTION()
-    void Vertical_Movement(float Value);
+    void Vertical_Input(float Value);
 
 	UFUNCTION()
-    void Horizontal_Movement(float Value);
+    void Horizontal_Input(float Value);
+
+	UFUNCTION()
+    virtual void Move_By_Input(const float& DeltaTime);
 //////////////_________________
 //////////////_Animation_Logic_
 	UFUNCTION()
-    virtual void Update_Animation();
-
-	UFUNCTION()
-	void Update_Person(const float& DeltaTime);
+	virtual void Set_Status_Animation();
+	
 //////////////_________________
 
 	// Called every frame
@@ -97,4 +101,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Person Input")
 	FPersonInput PersonInput;
 
+	bool Is_Status_Change_Locked;
 };
+
+

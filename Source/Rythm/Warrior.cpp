@@ -6,16 +6,14 @@
 
 AWarrior::AWarrior()
 {
-	//Attack_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Attack"));
-	//Block_Animation = CreateDefaultSubobject<UPaperFlipbook>(TEXT("Block"));
 	Is_Warrior_Started_Attack = false;
 	Is_Warrior_Started_Block = false;
 	Is_Warrior_Stopped_Attack = true;
 	Is_Warrior_Stopped_Block = true;
 
-	Block_Frames = 0;
-	Attack_Frames = 0;
-	
+	Current_Block_Frame = 0;
+	Current_Attack_Frame = 0;
+
 	Right_Block = CreateDefaultSubobject<UBoxComponent>(TEXT("Block_1"));
 	Right_Block->SetRelativeLocation(FVector(75.0f, 0.0f, 0.0f));
 	Right_Block->SetBoxExtent(FVector(40.0f, 40.0f, 40.0f));
@@ -47,18 +45,65 @@ TArray<APerson*> AWarrior::Get_Hittable_Persons(const bool& Block)
 	return Pure_Result;
 }
 
+void AWarrior::Set_Status_Animation()
+{
+	if (Current_Status == "Idle")
+	{
+		GetSprite()->SetFlipbook(Idle_Animation);
+	}
+	else if (Current_Status == "Run")
+	{
+		GetSprite()->SetFlipbook(Running_Animation);
+	}
+	else if (Current_Status == "Attack")
+	{
+		GetSprite()->SetFlipbook(Attack_Animation);
+	}
+	else if (Current_Status == "Block")
+	{
+		GetSprite()->SetFlipbook(Block_Animation);
+	}
+	if (Direction)
+	{
+		GetSprite()->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+	}
+	else
+	{
+		GetSprite()->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
+	}
+}
+
+void AWarrior::Iterate_Cooldown_Status()
+{
+	if (Attack_Cooldown_Frames > 0)
+	{
+		Attack_Cooldown_Frames--;
+	}
+	if (Block_Cooldown_Frames > 0)
+	{
+		Block_Cooldown_Frames--;
+	}
+}
+
 void AWarrior::Attack()
 {
-	Is_Warrior_Started_Attack = true;
-	Is_Warrior_Stopped_Attack = false;
-	UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
-	// Hits all overlapped persons
-
-	TArray<APerson*> Hittable_Persons = Get_Hittable_Persons(Direction);
-	
-	for (auto Iter : Hittable_Persons)
+	if (Attack_Cooldown_Frames == 0)
 	{
-		Iter->Take_Damage(Damage_Value);
+		Is_Warrior_Started_Attack = true;
+		Is_Warrior_Stopped_Attack = false;
+		Current_Status = "Attack";
+		Is_Status_Change_Locked = true;
+		Is_Movement_Locked = true;
+		UE_LOG(LogTemp, Warning, TEXT("Dealed Damage"));
+	
+		// Hits all overlapped persons
+		TArray<APerson*> Hittable_Persons = Get_Hittable_Persons(Direction);
+	
+		for (auto Iter : Hittable_Persons)
+		{
+			Iter->Take_Damage(Damage_Value);
+		}
+		Attack_Cooldown_Frames = Warrior_Attack_Cooldown;
 	}
 }
 
@@ -78,70 +123,52 @@ void AWarrior::Iterate_Combat_Status()
 {
 	if(Is_Warrior_Started_Attack)
 	{
-		if(Attack_Frames == Attack_Frames_Amount)
+		if(Current_Attack_Frame == Attack_Frames_Amount)
 		{
 			Is_Warrior_Stopped_Attack = true;
 			Is_Warrior_Started_Attack = false;
-			Attack_Frames = 0;
+			Is_Status_Change_Locked = false;
+			Is_Movement_Locked = false;
+			Current_Attack_Frame = 0;
 		}
-		else Attack_Frames++;
+		else Current_Attack_Frame++;
+		if (Person_Name == "Main_Hero")
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Attack frame %i"),
+             Current_Attack_Frame);
+		}
 	}
 	else if (Is_Warrior_Started_Block)
 	{
-		if(Block_Frames == Block_Frames_Amount)
+		if(Current_Block_Frame == Block_Frames_Amount)
 		{
 			Is_Warrior_Stopped_Block = true;
 			Is_Warrior_Started_Block = false;
-			Block_Frames = 0;
+			Is_Status_Change_Locked = false;
+			Is_Movement_Locked = false;
+			Current_Block_Frame = 0;
 		}
-		else Block_Frames++;
-	}
-}
-
-void AWarrior::Update_Animation()
-{
-	UPaperFlipbook* Desired_Animation;
-	if(!Is_Warrior_Stopped_Attack)
-	{
-		Desired_Animation = Attack_Animation;
-	}
-	else if(!Is_Warrior_Stopped_Block)
-	{
-		Desired_Animation = Block_Animation;
-	}
-	else
-	{
-		const FVector2D Player_Velocity = PersonInput.PureMovementInput;
-		/*
-		if (Person_Name != "Main_Hero")
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Velocity in AW::Upd_Anim size squared %f"),
-             PersonInput.PureMovementInput.SizeSquared());
-		}
-		*/
-		Desired_Animation = Player_Velocity.SizeSquared() > 0.0f ?
-            Running_Animation : Idle_Animation;
-	}
-	if (GetSprite()->GetFlipbook() != Desired_Animation)
-	{
-		GetSprite()->SetFlipbook(Desired_Animation);
+		else Current_Block_Frame++;
 	}
 }
 
 void AWarrior::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	// Iterate_Combat_Status();
+	// Update_Person(DeltaTime);
 	Iterate_Combat_Status();
-	
-	Update_Person(DeltaTime);
+	Move_By_Input(DeltaTime);
+	Set_Status_Animation();
+	Iterate_Cooldown_Status();
 }
 
 void AWarrior::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Movement);
-	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Movement);
+	InputComponent->BindAxis("Horizontal", this, &APerson::Horizontal_Input);
+	InputComponent->BindAxis("Vertical", this, &APerson::Vertical_Input);
 	InputComponent->BindAction("Attack", IE_Pressed, this, &AWarrior::Attack);
 	InputComponent->BindAction("Block", IE_Pressed, this, &AWarrior::Block);
 }
