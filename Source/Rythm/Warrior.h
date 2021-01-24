@@ -61,8 +61,7 @@ public:
 	UFUNCTION()
 	virtual void Block();
 
-	UFUNCTION()
-	virtual bool Is_Warrior_Blocking();
+	virtual bool Is_Warrior_Blocking() override;
 
 	UFUNCTION()
 	virtual void Iterate_Combat_Status();

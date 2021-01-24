@@ -17,7 +17,7 @@ AEnemy::AEnemy(const class FObjectInitializer& PCIP)
 	Attack_Signal = false;
 	Is_Waiting = false;
 	Health_Value = 100.0f;
-	Damage_Value = 0.0f;
+	Damage_Value = 20.0f;
 	Person_Move_Speed = 15.0f;
 	Attack_Frames_Amount = 40;
 	Person_Name = "Enemy";

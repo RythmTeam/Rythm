@@ -101,7 +101,14 @@ void AWarrior::Attack()
 	
 		for (auto Iter : Hittable_Persons)
 		{
-			Iter->Take_Damage(Damage_Value);
+			if (!Iter->Is_Warrior_Blocking())
+			{
+				Iter->Take_Damage(Damage_Value);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Successfully blocked damage!"));
+			}
 		}
 		Attack_Cooldown_Frames = Warrior_Attack_Cooldown;
 	}
@@ -116,7 +123,7 @@ void AWarrior::Block()
 		Current_Status = "Block";
 		Is_Status_Change_Locked = true;
 		Is_Movement_Locked = true;
-		UE_LOG(LogTemp, Warning, TEXT("Blocked Damage"));
+		UE_LOG(LogTemp, Warning, TEXT("Block Damage"));
 	}
 }
 
@@ -139,11 +146,13 @@ void AWarrior::Iterate_Combat_Status()
 			Current_Attack_Frame = 0;
 		}
 		else Current_Attack_Frame++;
+		/*
 		if (Person_Name == "Enemy")
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Attack frame %i"),
              Current_Attack_Frame);
 		}
+		*/
 	}
 	else if (Is_Warrior_Started_Block)
 	{

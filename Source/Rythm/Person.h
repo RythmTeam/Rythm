@@ -74,6 +74,9 @@ public:
 
 	UFUNCTION()
 	virtual void Death();
+
+	UFUNCTION()
+	virtual bool Is_Warrior_Blocking();
 //////////////________________
 //////////////_Movement_Logic_
 	UFUNCTION()

@@ -124,6 +124,12 @@ void APerson::Death()
 	this->Destroy();
 }
 
+bool APerson::Is_Warrior_Blocking()
+{
+	// Always return false because a regular person cannot block;
+	return false;
+}
+
 void APerson::Take_Damage(const float Taken_Damage)
 {
 	Health_Value -= Taken_Damage;
