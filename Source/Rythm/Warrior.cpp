@@ -109,8 +109,15 @@ void AWarrior::Attack()
 
 void AWarrior::Block()
 {
-	Is_Warrior_Started_Block = true;
-	Is_Warrior_Stopped_Block = false;
+	if (Block_Cooldown_Frames == 0)
+	{
+		Is_Warrior_Started_Block = true;
+		Is_Warrior_Stopped_Block = false;
+		Current_Status = "Block";
+		Is_Status_Change_Locked = true;
+		Is_Movement_Locked = true;
+		UE_LOG(LogTemp, Warning, TEXT("Blocked Damage"));
+	}
 }
 
 bool AWarrior::Is_Warrior_Blocking()

@@ -27,7 +27,7 @@ AMain_Hero::AMain_Hero()
 		USpringArmComponent::SocketName);
 
 	Attack_Frames_Amount = 23;
-	Block_Frames_Amount = 10;
+	Block_Frames_Amount = 16;
 	Health_Value = 100.0f;
 	Person_Move_Speed = 20.0f;
 	Damage_Value = 10.0f;
